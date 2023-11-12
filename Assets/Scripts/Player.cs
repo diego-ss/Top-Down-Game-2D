@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 200.0f;
+    public float speed = 300.0f;
     
     private Rigidbody2D rigidbody;
-    private Vector2 direction;
+    private Vector2 _direction;
+
+    public Vector2 Direction { get => _direction; set => _direction = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -18,11 +20,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        _direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
 
     private void FixedUpdate()
     {
-        rigidbody.velocity = direction.normalized * speed * Time.fixedDeltaTime;
+        rigidbody.velocity = _direction.normalized * speed * Time.fixedDeltaTime;
     }
 }
