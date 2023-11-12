@@ -17,7 +17,15 @@ public class PlayerAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.Direction.magnitude > 0f)
+        OnMove();
+        OnRun();
+    }
+
+    #region Movement
+
+    void OnMove()
+    {
+        if (player.Direction.magnitude > 0f)
         {
             animator.SetInteger("transition", 1);
         }
@@ -26,9 +34,21 @@ public class PlayerAnim : MonoBehaviour
             animator.SetInteger("transition", 0);
         }
 
-        if(player.Direction.x >= 0)
+        if (player.Direction.x >= 0)
             transform.eulerAngles = new Vector3(0, 0, 0);
         else
             transform.eulerAngles = new Vector3(0, 180, 0);
     }
+
+    void OnRun()
+    {
+        if (player.IsRunning && player.Direction.magnitude > 0f)
+        {
+            animator.SetInteger("transition", 2);
+        }
+    }
+
+    #endregion
+
+
 }
