@@ -16,9 +16,15 @@ MonoBehaviour:
   speakerSprite: {fileID: 0}
   sentence: 
   dialogues:
-  - actorName: 
+  - actorName: NPC
     profile: {fileID: -8091321643688609963, guid: ef350ce8c55549943898cfdb02687965, type: 3}
     sentence:
-      portuguese: "Ol\xE1 mundo!"
-      english: 
-      spanish: 
+      portuguese: "Ol\xE1 forasteiro!"
+      english: Hello strange
+      spanish: "Hola estra\xF1o"
+  - actorName: NPC
+    profile: {fileID: 21300000, guid: 843dbafadc199f744b0567dcac04169b, type: 3}
+    sentence:
+      portuguese: Vem sempre aqui?
+      english: You ever come here?
+      spanish: Vien siempre aqui?
