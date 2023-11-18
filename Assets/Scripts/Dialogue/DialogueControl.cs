@@ -32,6 +32,8 @@ public class DialogueControl : MonoBehaviour
 
     public static DialogueControl instance;
 
+    public bool IsShowing { get => isShowing; set => isShowing = value; }
+
     private void Awake()
     {
         if (instance == null)
@@ -75,7 +77,7 @@ public class DialogueControl : MonoBehaviour
             else
             {
                 dialogueContainer.SetActive(false);
-                isShowing = false;
+                IsShowing = false;
                 index = 0;
                 dialogueText.text = "";
                 sentences = null;
@@ -88,11 +90,11 @@ public class DialogueControl : MonoBehaviour
     /// </summary>
     public void Speech(string[] txt)
     {
-        if(!isShowing)
+        if(!IsShowing)
         {
             dialogueContainer.SetActive(true);
             sentences = txt;
-            isShowing = true;
+            IsShowing = true;
             StartCoroutine(TypeSentence());
         }
     }
