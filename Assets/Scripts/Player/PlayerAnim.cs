@@ -19,6 +19,7 @@ public class PlayerAnim : MonoBehaviour
     {
         OnMove();
         OnRun();
+        OnCutting();
     }
 
     #region Movement
@@ -37,9 +38,9 @@ public class PlayerAnim : MonoBehaviour
             animator.SetInteger("transition", 0);
         }
 
-        if (player.Direction.x >= 0)
+        if (player.Direction.x > 0)
             transform.eulerAngles = new Vector3(0, 0, 0);
-        else
+        else if (player.Direction.x < 0)
             transform.eulerAngles = new Vector3(0, 180, 0);
     }
 
@@ -53,5 +54,11 @@ public class PlayerAnim : MonoBehaviour
 
     #endregion
 
-
+    #region Combat
+    void OnCutting()
+    {
+        if (player.IsCutting)
+            animator.SetInteger("transition", 3);
+    }
+    #endregion
 }
