@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float speed = 300.0f;
     [SerializeField]
-    private float runSpeed = 450.0f;
+    private float runSpeed = 650.0f;
 
     private Rigidbody2D rigidbody;
 
@@ -86,15 +86,19 @@ public class Player : MonoBehaviour
     void OnCutting()
     {
         if(Input.GetMouseButtonDown(0) && !IsCutting)
+        {
             IsCutting = true;
+        }
         
         if(Input.GetMouseButtonUp(0) && IsCutting)
+        {
             IsCutting = false;
-
-        if (IsCutting)
-            speed = 0f;
-        else
             speed = initialSpeed;
+        }
+
+        if(IsCutting)
+            speed = 0f;
+
     }
     #endregion
 }
