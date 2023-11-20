@@ -22,8 +22,19 @@ public class Player : MonoBehaviour
     private bool _isCutting;
     public bool IsCutting { get => _isCutting; set => _isCutting = value; }
 
+    private bool _isDigging;
+    public bool IsDigging { get => _isDigging; set => _isDigging = value; }
+
     private Vector2 _direction;
     public Vector2 Direction { get => _direction; set => _direction = value; }
+
+    private Weapon weapon = Weapon.Axe;
+
+    public enum Weapon
+    {
+        Axe = 1,
+        Shovel = 2
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -35,10 +46,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        CheckSwitchWeapon();
+
         OnInput();
         OnRun();
         OnRoll();
-        OnCutting();
+
+        switch (weapon)
+        {
+            case Weapon.Axe:
+                OnCutting();
+                break;
+            case Weapon.Shovel:
+                OnDigging();
+                break;
+        }   
     }
 
     private void FixedUpdate()
@@ -83,6 +106,39 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Combat
+    void CheckSwitchWeapon()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            weapon = Weapon.Axe;
+            Debug.Log("Weapon: Machado");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            weapon = Weapon.Shovel;
+            Debug.Log("Weapon: Pá");
+        }
+    }
+
+    void OnDigging()
+    {
+        if (Input.GetMouseButtonDown(0) && !IsDigging)
+        {
+            IsDigging = true;
+        }
+
+        if (Input.GetMouseButtonUp(0) && IsDigging)
+        {
+            IsDigging = false;
+            speed = initialSpeed;
+        }
+
+        if (IsDigging)
+            speed = 0f;
+
+    }
+
     void OnCutting()
     {
         if(Input.GetMouseButtonDown(0) && !IsCutting)
@@ -98,7 +154,6 @@ public class Player : MonoBehaviour
 
         if(IsCutting)
             speed = 0f;
-
     }
     #endregion
 }

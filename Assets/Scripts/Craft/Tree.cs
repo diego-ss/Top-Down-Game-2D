@@ -42,7 +42,7 @@ public class Tree : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Axe") && Destroyed)
+        if(collision.CompareTag("Axe") && !Destroyed)
             OnHit();
     }
 }
