@@ -12079,6 +12079,7 @@ GameObject:
   - component: {fileID: 660197071}
   - component: {fileID: 660197074}
   - component: {fileID: 660197076}
+  - component: {fileID: 660197077}
   - component: {fileID: 660197075}
   m_Layer: 8
   m_Name: Player
@@ -12245,6 +12246,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685e24971e1732148b03720f6a260ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &660197077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660197069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc068d794ea515047ba633793a4808bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalWood: 0
 --- !u!1 &1013409401
 GameObject:
   m_ObjectHideFlags: 0

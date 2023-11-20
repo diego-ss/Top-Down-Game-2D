@@ -6,6 +6,7 @@ public class Tree : MonoBehaviour
 {
     [SerializeField] private float health = 5.0f;
     [SerializeField] private GameObject woodPrefab;
+    [SerializeField] private ParticleSystem leafsParticles;
     [SerializeField] private int maxWoods;
 
     private bool Destroyed = false;
@@ -22,6 +23,9 @@ public class Tree : MonoBehaviour
         health--;
 
         animator.SetTrigger("Hit");
+
+        if(!Destroyed) 
+            leafsParticles.Play();
 
         if(health <= 0 && !Destroyed)
         {
