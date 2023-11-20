@@ -21,6 +21,7 @@ public class PlayerAnim : MonoBehaviour
         OnRun();
         OnCutting();
         OnDigging();
+        OnWatering();
     }
 
     #region Movement
@@ -66,6 +67,12 @@ public class PlayerAnim : MonoBehaviour
     {
         if (player.IsDigging)
             animator.SetInteger("transition", 4);
+    }
+
+    void OnWatering()
+    {
+        if (player.IsWatering)
+            animator.SetInteger("transition", 5);
     }
     #endregion
 }

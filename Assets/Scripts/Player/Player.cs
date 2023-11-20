@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rigidbody;
 
+    private PlayerItems playerItems;
+
     private float initialSpeed;
 
     private bool _isRunning;
@@ -25,6 +27,9 @@ public class Player : MonoBehaviour
     private bool _isDigging;
     public bool IsDigging { get => _isDigging; set => _isDigging = value; }
 
+    private bool _isWatering;
+    public bool IsWatering { get => _isWatering; set => _isWatering = value; }
+
     private Vector2 _direction;
     public Vector2 Direction { get => _direction; set => _direction = value; }
 
@@ -33,13 +38,15 @@ public class Player : MonoBehaviour
     public enum Weapon
     {
         Axe = 1,
-        Shovel = 2
+        Shovel = 2,
+        WaterBucket = 3
     }
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        playerItems = GetComponent<PlayerItems>();
         initialSpeed = speed;
     }
 
@@ -60,6 +67,9 @@ public class Player : MonoBehaviour
                 break;
             case Weapon.Shovel:
                 OnDigging();
+                break;
+            case Weapon.WaterBucket:
+                OnWatering();
                 break;
         }   
     }
@@ -119,6 +129,12 @@ public class Player : MonoBehaviour
             weapon = Weapon.Shovel;
             Debug.Log("Weapon: Pá");
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            weapon = Weapon.WaterBucket;
+            Debug.Log("Weapon: Balde de Água");
+        }
     }
 
     void OnDigging()
@@ -136,6 +152,39 @@ public class Player : MonoBehaviour
 
         if (IsDigging)
             speed = 0f;
+
+    }
+
+    void OnWatering()
+    {
+        if (playerItems.TotalWater > 0)
+        {
+            if (Input.GetMouseButtonDown(0) && !IsWatering)
+                IsWatering = true;
+        } 
+        else
+        {
+            Debug.Log("Água insuficiente");
+        }
+
+
+        if ((Input.GetMouseButtonUp(0) && IsWatering) || playerItems.TotalWater == 0)
+        {
+            IsWatering = false;
+            speed = initialSpeed;
+        }
+
+        if (IsWatering)
+        {
+            speed = 0f;
+
+            playerItems.TotalWater = Mathf.Clamp(playerItems.TotalWater -= 10 * Time.deltaTime, 0, playerItems.TotalWater);
+
+            if (playerItems.TotalWater > 0)
+                playerItems.TotalWater -= 10 * Time.deltaTime;
+            else 
+               playerItems.TotalWater = 0;
+        }
 
     }
 
