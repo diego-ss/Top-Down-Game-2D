@@ -23,14 +23,10 @@ public class Tree : MonoBehaviour
         health--;
 
         animator.SetTrigger("Hit");
+        leafsParticles.Play();
 
-        if(!Destroyed) 
-            leafsParticles.Play();
-
-        if(health <= 0 && !Destroyed)
+        if(health <= 0)
         {
-            Destroyed = true;
-
             for(int i = 0; i < maxWoods; i++)
             {
                 // criar o toco e instanciar os drops
@@ -39,14 +35,14 @@ public class Tree : MonoBehaviour
                     Quaternion.identity);
             }
 
-
             animator.SetTrigger("Cut");
+            Destroyed = true;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Axe"))
+        if(collision.CompareTag("Axe") && Destroyed)
             OnHit();
     }
 }
