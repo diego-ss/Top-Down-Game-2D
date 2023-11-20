@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  woodPrefab: {fileID: 6744062255444682138, guid: c83d9bb25e104314dae5219f1a9e0076, type: 3}
 --- !u!1 &7337853615799224772
 GameObject:
   m_ObjectHideFlags: 0

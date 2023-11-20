@@ -5,6 +5,10 @@ using UnityEngine;
 public class Tree : MonoBehaviour
 {
     [SerializeField] private float health = 5.0f;
+    [SerializeField] private GameObject woodPrefab;
+    [SerializeField] private int maxWoods;
+
+    private bool Destroyed = false;
     private Animator animator;
 
     // Start is called before the first frame update
@@ -19,9 +23,19 @@ public class Tree : MonoBehaviour
 
         animator.SetTrigger("Hit");
 
-        if(health <= 0)
+        if(health <= 0 && !Destroyed)
         {
-            // criar o toco e instanciar os drops
+            Destroyed = true;
+
+            for(int i = 0; i < maxWoods; i++)
+            {
+                // criar o toco e instanciar os drops
+                Instantiate(woodPrefab,
+                    transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-0.5f, 0.5f), 0f),
+                    Quaternion.identity);
+            }
+
+
             animator.SetTrigger("Cut");
         }
     }
