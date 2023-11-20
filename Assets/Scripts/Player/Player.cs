@@ -177,13 +177,7 @@ public class Player : MonoBehaviour
         if (IsWatering)
         {
             speed = 0f;
-
             playerItems.TotalWater = Mathf.Clamp(playerItems.TotalWater -= 10 * Time.deltaTime, 0, playerItems.TotalWater);
-
-            if (playerItems.TotalWater > 0)
-                playerItems.TotalWater -= 10 * Time.deltaTime;
-            else 
-               playerItems.TotalWater = 0;
         }
 
     }

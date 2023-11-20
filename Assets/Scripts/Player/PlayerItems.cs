@@ -10,6 +10,9 @@ public class PlayerItems : MonoBehaviour
     [SerializeField] private float totalWater;
     public float TotalWater { get => totalWater; set => totalWater = value; }
 
+    [SerializeField] private int totalCarrots;
+    public int TotalCarrots { get => totalCarrots; set => totalCarrots = value; }
+
     private int WaterLimit = 50;
 
     // Start is called before the first frame update
