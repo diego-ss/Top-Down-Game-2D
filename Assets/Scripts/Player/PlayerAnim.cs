@@ -7,11 +7,15 @@ public class PlayerAnim : MonoBehaviour
     private Player player;
     private Animator animator;
 
+    private CastingArea castingArea;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Player>();
         animator = GetComponent<Animator>();
+
+        castingArea = FindObjectOfType<CastingArea>();
     }
 
     // Update is called once per frame
@@ -22,6 +26,19 @@ public class PlayerAnim : MonoBehaviour
         OnCutting();
         OnDigging();
         OnWatering();
+    }
+
+    public void OnCastingStarted()
+    {
+        animator.SetTrigger("casting");
+        player.CanMove = false;
+    }
+
+    // Called by animation event
+    public void OnCastingEnded()
+    {
+        castingArea.OnCasting();
+        player.CanMove = true;
     }
 
     #region Movement

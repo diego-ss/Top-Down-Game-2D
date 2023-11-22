@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
 
     private float initialSpeed;
 
+    public bool CanMove { get; set; } = true;
+
     private bool _isRunning;
     public bool IsRunning { get => _isRunning; set => _isRunning = value; }
 
@@ -53,30 +55,35 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        CheckSwitchWeapon();
-
-        OnInput();
-        OnRun();
-        OnRoll();
-
-        switch (weapon)
+        if (CanMove)
         {
-            case Weapon.Axe:
-                OnCutting();
-                break;
-            case Weapon.Shovel:
-                OnDigging();
-                break;
-            case Weapon.WaterBucket:
-                OnWatering();
-                break;
+            CheckSwitchWeapon();
+
+            OnInput();
+            OnRun();
+            OnRoll();
+
+            switch (weapon)
+            {
+                case Weapon.Axe:
+                    OnCutting();
+                    break;
+                case Weapon.Shovel:
+                    OnDigging();
+                    break;
+                case Weapon.WaterBucket:
+                    OnWatering();
+                    break;
+            }
         }   
     }
 
     private void FixedUpdate()
     {
-        OnMove();
+        if (CanMove)
+        {
+            OnMove();
+        }
     }
 
     #region Movement

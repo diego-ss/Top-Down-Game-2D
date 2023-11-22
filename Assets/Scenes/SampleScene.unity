@@ -13482,9 +13482,11 @@ MonoBehaviour:
   totalWood: 0
   totalWater: 0
   totalCarrots: 0
-  WaterLimit: 50
+  totalFish: 0
+  WaterLimit: 70
   WoodLimit: 10
   CarrotLimit: 5
+  FishLimit: 10
 --- !u!1 &757306335
 GameObject:
   m_ObjectHideFlags: 0
@@ -21079,7 +21081,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7898876, y: 0.20300001}
   m_AnchorMax: {x: 0.9448876, y: 0.5}
-  m_AnchoredPosition: {x: 0.6499634, y: 3.0001068}
+  m_AnchoredPosition: {x: 0.6499634, y: 3.000122}
   m_SizeDelta: {x: -19.291565, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1566650680
@@ -21500,6 +21502,82 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7097262404634119438, guid: d04f40609b05674409703cc6aaf28165, type: 3}
   m_PrefabInstance: {fileID: 124794784}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1589656549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1589656551}
+  - component: {fileID: 1589656550}
+  - component: {fileID: 1589656552}
+  m_Layer: 0
+  m_Name: CastingArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1589656550
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589656549}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.3788376}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.917915, y: 1.7576752}
+  m_EdgeRadius: 0
+--- !u!4 &1589656551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589656549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.470711, y: 6.64, z: -8.006066}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1589656552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589656549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8a4e890fc8b841a29fd12964b8993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNextToArea: 0
+  fishMinAmount: 1
+  fishMaxAmount: 3
+  fishAmount: 0
+  chanceToGetFish: 50
+  fishPrefab: {fileID: 6626469521781817746, guid: 7ea28dec0e215cb47941e9a24fed172b, type: 3}
 --- !u!1 &1640333014
 GameObject:
   m_ObjectHideFlags: 0
@@ -21780,7 +21858,7 @@ GameObject:
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

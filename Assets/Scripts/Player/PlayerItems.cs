@@ -13,10 +13,14 @@ public class PlayerItems : MonoBehaviour
 
     [SerializeField] private int totalCarrots;
     public int TotalCarrots { get => totalCarrots; set => totalCarrots = value; }
+
+    [SerializeField] private int totalFish;
+    public int TotalFish { get => totalFish; set => totalFish = value; }
     
-    public float WaterLimit = 50;
-    public int WoodLimit = 10;
-    public int CarrotLimit = 5;
+    public float WaterLimit;
+    public int WoodLimit;
+    public int CarrotLimit;
+    public int FishLimit;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +38,11 @@ public class PlayerItems : MonoBehaviour
     {
         if(totalWater < WaterLimit)
             totalWater = Mathf.Clamp(totalWater += amount, 0, WaterLimit);
+    }
+
+    public void AddFish(int amount)
+    {
+        if(totalFish < FishLimit)
+            totalFish = Mathf.Clamp(totalFish += amount, 0, totalFish);
     }
 }
