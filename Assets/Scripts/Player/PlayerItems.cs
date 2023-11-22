@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +13,10 @@ public class PlayerItems : MonoBehaviour
 
     [SerializeField] private int totalCarrots;
     public int TotalCarrots { get => totalCarrots; set => totalCarrots = value; }
-
-    private int WaterLimit = 50;
+    
+    public float WaterLimit = 50;
+    public int WoodLimit = 10;
+    public int CarrotLimit = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -27,15 +30,9 @@ public class PlayerItems : MonoBehaviour
         
     }
 
-    public void AddWater(int amount)
+    public void AddWater(float amount)
     {
         if(totalWater < WaterLimit)
-        {
             totalWater = Mathf.Clamp(totalWater += amount, 0, WaterLimit);
-            Debug.Log("Água adicionada.");
-        } else
-        {
-            Debug.Log("Limite de água atingido!");
-        }
     }
 }

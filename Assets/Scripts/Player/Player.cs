@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     private Vector2 _direction;
     public Vector2 Direction { get => _direction; set => _direction = value; }
 
-    private Weapon weapon = Weapon.Axe;
+    public Weapon weapon = Weapon.Axe;
 
     public enum Weapon
     {
@@ -119,30 +119,19 @@ public class Player : MonoBehaviour
     void CheckSwitchWeapon()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
             weapon = Weapon.Axe;
-            Debug.Log("Weapon: Machado");
-        }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
             weapon = Weapon.Shovel;
-            Debug.Log("Weapon: Pá");
-        }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
             weapon = Weapon.WaterBucket;
-            Debug.Log("Weapon: Balde de Água");
-        }
     }
 
     void OnDigging()
     {
         if (Input.GetMouseButtonDown(0) && !IsDigging)
-        {
             IsDigging = true;
-        }
 
         if (Input.GetMouseButtonUp(0) && IsDigging)
         {
@@ -158,14 +147,9 @@ public class Player : MonoBehaviour
     void OnWatering()
     {
         if (playerItems.TotalWater > 0)
-        {
             if (Input.GetMouseButtonDown(0) && !IsWatering)
                 IsWatering = true;
-        } 
-        else
-        {
-            Debug.Log("Água insuficiente");
-        }
+
 
 
         if ((Input.GetMouseButtonUp(0) && IsWatering) || playerItems.TotalWater == 0)
@@ -185,9 +169,7 @@ public class Player : MonoBehaviour
     void OnCutting()
     {
         if(Input.GetMouseButtonDown(0) && !IsCutting)
-        {
             IsCutting = true;
-        }
         
         if(Input.GetMouseButtonUp(0) && IsCutting)
         {
