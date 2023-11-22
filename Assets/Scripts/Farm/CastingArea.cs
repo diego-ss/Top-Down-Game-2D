@@ -9,8 +9,8 @@ public class CastingArea : MonoBehaviour
     [SerializeField, Range(0,100)] private int chanceToGetFish;
     [SerializeField] private GameObject fishPrefab;
 
-    private int fishMinAmount;
-    private int fishMaxAmount;
+    [SerializeField] private int fishMinAmount;
+    [SerializeField] private int fishMaxAmount;
     private PlayerItems playerItems;
     private PlayerAnim playerAnim;
     private GameObject player;

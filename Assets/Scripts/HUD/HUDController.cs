@@ -10,6 +10,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] private Image waterFilledUI;
     [SerializeField] private Image woodFilledUI;
     [SerializeField] private Image carrotFilledUI;
+    [SerializeField] private Image fishFilledUI;
 
     [Header("Tools")]
     [SerializeField] private Image AxeImage;
@@ -34,6 +35,7 @@ public class HUDController : MonoBehaviour
         waterFilledUI.fillAmount = 0;
         woodFilledUI.fillAmount = 0;
         carrotFilledUI.fillAmount = 0;    
+        fishFilledUI.fillAmount = 0;    
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class HUDController : MonoBehaviour
         waterFilledUI.fillAmount = playerItems.TotalWater / playerItems.WaterLimit;
         woodFilledUI.fillAmount = (float)playerItems.TotalWood / playerItems.WoodLimit;
         carrotFilledUI.fillAmount = (float)playerItems.TotalCarrots / playerItems.CarrotLimit;
+        fishFilledUI.fillAmount = (float)playerItems.TotalFish / playerItems.FishLimit;
 
         if (player.weapon == Player.Weapon.Axe)
         {
