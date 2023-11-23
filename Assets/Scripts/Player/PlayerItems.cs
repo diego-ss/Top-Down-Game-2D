@@ -45,4 +45,17 @@ public class PlayerItems : MonoBehaviour
         if(totalFish < FishLimit)
             totalFish = Mathf.Clamp(totalFish += amount, 0, totalFish);
     }
+
+    public bool UseWood(int amount)
+    {
+        if(totalWood >= amount)
+        {
+            totalWood -= amount;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
