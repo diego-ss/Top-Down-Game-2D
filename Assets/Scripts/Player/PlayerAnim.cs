@@ -41,6 +41,19 @@ public class PlayerAnim : MonoBehaviour
         player.CanMove = true;
     }
 
+
+    public void OnHammeringStarted()
+    {
+        animator.SetBool("building", true);
+        player.CanMove = false;
+    }
+
+    public void OnHammeringEnded()
+    {
+        animator.SetBool("building", false);
+        player.CanMove = true;
+    }
+
     #region Movement
 
     void OnMove()
@@ -73,7 +86,7 @@ public class PlayerAnim : MonoBehaviour
 
     #endregion
 
-    #region Combat
+    #region Weapons
     void OnCutting()
     {
         if (player.IsCutting)
