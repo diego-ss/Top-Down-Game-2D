@@ -10,7 +10,7 @@ public class PlayerAnim : MonoBehaviour
 
     [SerializeField] private float recoveryTime;
 
-    [Header("Combat")]
+    [Header("Combat Referentes")]
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float radius;
     [SerializeField] private LayerMask enemyLayer;
@@ -141,6 +141,7 @@ public class PlayerAnim : MonoBehaviour
         if(hit != null)
         {
             // atacou o inimigo
+            hit.gameObject.GetComponentInChildren<AnimationControl>().TakeDamage(player.attack);
             Debug.Log("Acertou o inimigo");
         }
     }

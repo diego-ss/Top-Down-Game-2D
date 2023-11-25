@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float runSpeed = 650.0f;
 
+    [Header("Stats")]
+    public float attack;
+    public float health;
+
     private Rigidbody2D rigidbody;
 
     private PlayerItems playerItems;

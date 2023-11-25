@@ -12,12 +12,14 @@ public class AnimationControl : MonoBehaviour
 
     private Animator animator;
     private PlayerAnim player;
+    private Skeleton skeleton;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerAnim>();
+        skeleton = GetComponentInParent<Skeleton>();
     }
 
     // Update is called once per frame
@@ -33,15 +35,39 @@ public class AnimationControl : MonoBehaviour
 
     public void Attack()
     {
-        Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, radius, playerLayer);
-        
-        if(hit != null )
+        if(!skeleton.isDead)
         {
-            // tira vida do player
-            player.TakeDamage(attack);
-        } else
+            Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, radius, playerLayer);
+
+            if (hit != null)
+            {
+                // tira vida do player
+                player.TakeDamage(attack);
+            }
+            else
+            {
+                // não acertou o player
+            }
+        }
+    }
+
+    public void TakeDamage(float value)
+    {     
+        if(!skeleton.isDead)
         {
-            // não acertou o player
+            skeleton.health -= value;
+            
+            if(skeleton.health <= 0)
+            {
+                // morreu
+                skeleton.isDead = true;
+                animator.SetBool("death", true);
+                Destroy(skeleton.gameObject, 1.0f);
+            } else
+            {
+                animator.SetTrigger("hit");
+                skeleton.healthImage.fillAmount = skeleton.health / skeleton.totalHealth;
+            }
         }
     }
 
