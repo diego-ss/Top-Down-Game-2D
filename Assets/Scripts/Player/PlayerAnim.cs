@@ -10,6 +10,11 @@ public class PlayerAnim : MonoBehaviour
 
     [SerializeField] private float recoveryTime;
 
+    [Header("Combat")]
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float radius;
+    [SerializeField] private LayerMask enemyLayer;
+
     private CastingArea castingArea;
 
     private bool isHurt = false;
@@ -127,6 +132,22 @@ public class PlayerAnim : MonoBehaviour
     {
         yield return new WaitForSeconds(recoveryTime);
         isHurt = false;
+    }
+
+    public void Attack()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, radius, enemyLayer);
+        
+        if(hit != null)
+        {
+            // atacou o inimigo
+            Debug.Log("Acertou o inimigo");
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, radius);
     }
     #endregion
 }

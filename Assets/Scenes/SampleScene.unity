@@ -12670,7 +12670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -328, y: 4}
+  m_AnchoredPosition: {x: -328, y: 3.9999847}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &478539115
@@ -13561,6 +13561,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoveryTime: 1
+  attackPoint: {fileID: 1834691056}
+  radius: 0.4
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &660197077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19480,7 +19485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 43.7, y: 3.1999817}
+  m_AnchoredPosition: {x: 43.7, y: 3.1999664}
   m_SizeDelta: {x: 1100.5773, y: 177.23238}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1459855566
@@ -21843,7 +21848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7898876, y: 0.20300001}
   m_AnchorMax: {x: 0.9448876, y: 0.5}
-  m_AnchoredPosition: {x: 0.6499634, y: 3.0001144}
+  m_AnchoredPosition: {x: 0.6499634, y: 3.0000992}
   m_SizeDelta: {x: -19.291565, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1566650680
@@ -22545,7 +22550,7 @@ GameObject:
   - component: {fileID: 1739507665}
   - component: {fileID: 1739507664}
   - component: {fileID: 1739507668}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
