@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeAmount: 3
-  woodAmount: 0
+  woodAmount: 2
   transparentColor: {r: 1, g: 1, b: 1, a: 0.29803923}
   visibleColor: {r: 1, g: 1, b: 1, a: 1}
   playerPosition: {fileID: 8288368372122220762}
