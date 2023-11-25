@@ -7,12 +7,17 @@ public class AnimationControl : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float radius;
     [SerializeField] private LayerMask playerLayer;
+
+    [SerializeField] private float attack;
+
     private Animator animator;
+    private PlayerAnim player;
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>();
+        player = FindObjectOfType<PlayerAnim>();
     }
 
     // Update is called once per frame
@@ -33,7 +38,7 @@ public class AnimationControl : MonoBehaviour
         if(hit != null )
         {
             // tira vida do player
-            Debug.Log("Acertou o player");
+            player.TakeDamage(attack);
         } else
         {
             // não acertou o player

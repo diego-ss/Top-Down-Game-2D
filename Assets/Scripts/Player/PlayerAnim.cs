@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,11 @@ public class PlayerAnim : MonoBehaviour
     private Player player;
     private Animator animator;
 
+    [SerializeField] private float recoveryTime;
+
     private CastingArea castingArea;
+
+    private bool isHurt = false;
 
     // Start is called before the first frame update
     void Start()
@@ -103,6 +108,25 @@ public class PlayerAnim : MonoBehaviour
     {
         if (player.IsWatering)
             animator.SetInteger("transition", 5);
+    }
+    #endregion
+
+
+    #region Combat
+    public void TakeDamage(float value)
+    {
+        if(!isHurt)
+        {
+            animator.SetTrigger("hurt");
+            isHurt = true;
+            StartCoroutine(Invulnerable());
+        }
+    }
+
+    private IEnumerator Invulnerable()
+    {
+        yield return new WaitForSeconds(recoveryTime);
+        isHurt = false;
     }
     #endregion
 }
