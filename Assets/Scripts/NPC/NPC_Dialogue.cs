@@ -11,6 +11,8 @@ public class NPC_Dialogue : MonoBehaviour
 
     bool playerHit;
     private string[] sentences = null;
+    private string[] actorsNames = null;
+    private Sprite[] actorsSprites = null;
 
     // Start is called before the first frame update
     void Start()
@@ -32,13 +34,16 @@ public class NPC_Dialogue : MonoBehaviour
             default:
                 break;
         }
+
+        actorsNames = dialogueSettings.dialogues.Select(x => x.actorName).ToArray();
+        actorsSprites = dialogueSettings.dialogues.Select(x => x.profile).ToArray();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && playerHit)
         {
-            DialogueControl.instance.Speech(sentences);
+            DialogueControl.instance.Speech(sentences, actorsNames, actorsSprites);
         }
     }
 

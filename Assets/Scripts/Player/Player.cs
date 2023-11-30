@@ -78,6 +78,12 @@ public class Player : MonoBehaviour
                 case Weapon.WaterBucket:
                     OnWatering();
                     break;
+                default:
+                    IsCutting = false;
+                    IsDigging = false;
+                    IsWatering = false;
+                    break;
+
             }
         }   
     }
@@ -130,13 +136,29 @@ public class Player : MonoBehaviour
     void CheckSwitchWeapon()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ClearActions();
             weapon = Weapon.Axe;
+        }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ClearActions();
             weapon = Weapon.Shovel;
+        }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ClearActions();
             weapon = Weapon.WaterBucket;
+        }
+    }
+
+    void ClearActions()
+    {
+        IsDigging = false;
+        IsWatering = false;
+        IsCutting = false;
     }
 
     void OnDigging()

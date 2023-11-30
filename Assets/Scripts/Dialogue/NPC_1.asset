@@ -28,3 +28,9 @@ MonoBehaviour:
       portuguese: Vem sempre aqui?
       english: You ever come here?
       spanish: Vien siempre aqui?
+  - actorName: "Her\xF3i"
+    profile: {fileID: -4030792056451597264, guid: a02c59d6c2cb9fa419608fd0eee9e95d, type: 3}
+    sentence:
+      portuguese: "Sim, e voc\xEA?"
+      english: 
+      spanish: 

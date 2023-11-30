@@ -29,6 +29,10 @@ public class DialogueControl : MonoBehaviour
     private bool isShowing; // se o dialogo está sendo mostrado
     private int index; // indice do texto atual
     private string[] sentences; // lista de textos
+    private string[] actorsNames; // lista de nomes
+    private Sprite[] profileImages; // lista de imagens de perfil
+
+    private Player player;
 
     public static DialogueControl instance;
 
@@ -43,7 +47,7 @@ public class DialogueControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -55,6 +59,9 @@ public class DialogueControl : MonoBehaviour
     IEnumerator TypeSentence()
     {
         dialogueText.text = "";
+        actorNameText.text = actorsNames[index];
+        profileSprite.sprite = profileImages[index];
+
         foreach (char letter in sentences[index].ToCharArray())
         {
             dialogueText.text += letter;
@@ -81,6 +88,7 @@ public class DialogueControl : MonoBehaviour
                 index = 0;
                 dialogueText.text = "";
                 sentences = null;
+                player.CanMove = true;
             }
         }
     }
@@ -88,14 +96,17 @@ public class DialogueControl : MonoBehaviour
     /// <summary>
     /// chamar dialogo do personagem
     /// </summary>
-    public void Speech(string[] txt)
+    public void Speech(string[] txt, string[] actors, Sprite[] profile)
     {
         if(!IsShowing)
         {
             dialogueContainer.SetActive(true);
             sentences = txt;
+            actorsNames = actors;
+            profileImages = profile;
             IsShowing = true;
             StartCoroutine(TypeSentence());
+            player.CanMove = false;
         }
     }
 }
